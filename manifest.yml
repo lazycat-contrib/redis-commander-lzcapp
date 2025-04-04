@@ -1,0 +1,26 @@
+lzc-sdk-version: "0.1"
+name: Redis Commander
+package: cloud.lazycat.app.redis-commander
+version: 0.0.1
+description: Redis Web端管理工具
+homepage: https://github.com/joeferner/redis-commander
+author: joeferner
+application:
+  subdomain: redis-commander
+  background_task: true
+  multi_instance: false
+  gpu_accel: false
+  kvm_accel: false
+  usb_accel: false
+  public_path:
+    - /
+  routes:
+    - /=http://redis-commander:8081/
+services:
+  redis:
+    image: docker.hlmirror.com/redis:latest
+  redis-commander:
+    image: registry.lazycat.cloud/czyt/joeferner/redis-commander:d87cc6828a25b689
+    environment:
+      - REDIS_HOSTS=local:redis:6379
+    user: redis
