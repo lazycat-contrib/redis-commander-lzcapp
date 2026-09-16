@@ -1,0 +1,19 @@
+application:
+  subdomain: redis-commander
+  background_task: true
+  multi_instance: false
+  public_path:
+    - /
+  upstreams:
+    - location: /
+      backend: http://redis-commander:8081/
+
+services:
+  redis:
+    # upstream: library/redis:7-alpine
+    image: redis:7-alpine
+  redis-commander:
+    # upstream: rediscommander/redis-commander:latest
+    image: rediscommander/redis-commander:latest
+    environment:
+      - REDIS_HOSTS=local:redis:6379
