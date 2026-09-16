@@ -7,13 +7,12 @@ application:
   upstreams:
     - location: /
       backend: http://redis-commander:8081/
-
 services:
   redis:
-    # upstream: library/redis:7-alpine
-    image: redis:7-alpine
+    # upstream: library/redis:7.4-alpine
+    image: registry.lazycat.cloud/czyt/library/redis:feb21bfd39585516
   redis-commander:
-    # upstream: rediscommander/redis-commander:latest
-    image: rediscommander/redis-commander:latest
+    # upstream: rediscommander/redis-commander:latest@sha256:19cd0c49f418779fa2822a0496c5e6516d0c792effc39ed20089e6268477e40a
+    image: registry.lazycat.cloud/czyt/rediscommander/redis-commander:700ae0514300a139
     environment:
       - REDIS_HOSTS=local:redis:6379
