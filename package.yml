@@ -1,4 +1,5 @@
 package: cloud.lazycat.app.redis-commander
+license: MIT
 version: 0.0.1
 name: Redis Commander
 description: "Redis Web 端管理工具"
